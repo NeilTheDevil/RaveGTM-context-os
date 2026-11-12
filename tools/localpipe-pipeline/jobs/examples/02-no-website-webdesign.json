@@ -1,0 +1,19 @@
+{
+  "name": "no-website-prospects",
+  "_comment": "Web-design play: local businesses with NO website. The pitch writes itself.",
+  "search": {
+    "queries": ["restaurant", "hair salon", "auto repair shop", "dentist", "gym"],
+    "locations": ["Boise, ID", "Meridian, ID", "Nampa, ID"],
+    "limit": "all",
+    "filters": { "has_website": false, "min_reviews": 5 }
+  },
+  "dedupe": true,
+  "enrich": {
+    "enabled": true,
+    "want_email": true,
+    "want_general_email": true,
+    "general_email_fallback_only": true,
+    "require_website": false,
+    "max_leads": 1000
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "medspa-practice-managers",
+  "_comment": "Target a role instead of the owner. Practice managers hold the budget in med spas.",
+  "search": {
+    "queries": ["medical spa"],
+    "locations": ["Miami, FL", "Fort Lauderdale, FL", "Boca Raton, FL", "West Palm Beach, FL"],
+    "limit": 300,
+    "filters": { "min_rating": 4.0, "min_reviews": 25, "has_website": true }
+  },
+  "dedupe": true,
+  "enrich": {
+    "enabled": true,
+    "want_email": true,
+    "want_phone": true,
+    "want_general_email": false,
+    "decision_maker_title": "Practice Manager",
+    "require_website": true,
+    "max_leads": 400
+  }
+}

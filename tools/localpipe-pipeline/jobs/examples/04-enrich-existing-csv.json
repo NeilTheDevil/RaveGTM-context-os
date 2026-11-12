@@ -1,0 +1,14 @@
+{
+  "name": "enrich-my-list",
+  "_comment": "Already have a list? Skip the scrape. Any CSV with a business-name column works.",
+  "source": { "csv": "./inbox/my-leads.csv" },
+  "dedupe": true,
+  "enrich": {
+    "enabled": true,
+    "want_email": true,
+    "want_phone": false,
+    "want_general_email": true,
+    "general_email_fallback_only": true,
+    "max_leads": null
+  }
+}

@@ -1,0 +1,40 @@
+# secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials*.json
+clay-session.json
+.treg/
+.claude/settings.local.json
+
+# lead lists, exports and raw data: never commit
+*.csv
+*.xlsx
+*.jsonl
+leads/
+raw-api-dumps/
+runs/
+tools/localpipe-pipeline/jobs/*.json
+!tools/localpipe-pipeline/jobs/examples/*.json
+
+# reference CSVs that hold no lead data (Google Maps category lists)
+!tools/localpipe-pipeline/reference/localpipe-business-categories.csv
+!tools/localpipe-pipeline/data/categories.csv
+
+# sending infrastructure identities stay local
+reference/inboxkit-mailboxes.csv
+*mailboxes*.csv
+
+# python and node
+.venv/
+venv/
+__pycache__/
+*.pyc
+node_modules/
+
+# system files
+.DS_Store
+Thumbs.db
+.vscode/

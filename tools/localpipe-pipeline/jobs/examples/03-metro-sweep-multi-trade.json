@@ -1,0 +1,21 @@
+{
+  "name": "phoenix-metro-trades",
+  "_comment": "Full metro coverage. 5 trades x 9 suburbs = 45 pairs batched into ONE API request.",
+  "search": {
+    "queries": ["plumber", "hvac contractor", "electrician", "roofer", "landscaper"],
+    "locations": [
+      "Phoenix, AZ", "Scottsdale, AZ", "Tempe, AZ", "Mesa, AZ", "Chandler, AZ",
+      "Gilbert, AZ", "Glendale, AZ", "Peoria, AZ", "Surprise, AZ"
+    ],
+    "limit": "all",
+    "filters": { "min_rating": 4.0, "has_website": true }
+  },
+  "dedupe": true,
+  "enrich": {
+    "enabled": true,
+    "want_email": true,
+    "want_general_email": true,
+    "general_email_fallback_only": true,
+    "max_leads": 2500
+  }
+}

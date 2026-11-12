@@ -1,0 +1,19 @@
+{
+  "name": "austin-plumbers",
+  "_comment": "The 5-minute starter. One city, 200 leads, owner email with info@ fallback. 600 credit ceiling.",
+  "search": {
+    "queries": ["plumbers"],
+    "locations": ["Austin, TX"],
+    "limit": 200,
+    "filters": { "has_website": true }
+  },
+  "dedupe": true,
+  "enrich": {
+    "enabled": true,
+    "want_email": true,
+    "want_phone": false,
+    "want_general_email": true,
+    "general_email_fallback_only": true,
+    "max_leads": 200
+  }
+}
