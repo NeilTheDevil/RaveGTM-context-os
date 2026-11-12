@@ -24,6 +24,22 @@ Labels: **Confirmed** = checked in a repo file or a source fetched by the resear
 
 ---
 
+## Priority signals: the 5 to build first
+
+Scored on the course's four tests. H / M / L. Volumes are Unverified until the first site-check
+pass runs on a real list.
+
+| # | Signal (matrix id) | Mother intent | Data source | Tool that detects it | Clear buying reason | Enough volume | Data you can get | Natural story | Build order |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | **Strong reviews + weak website** (U6 = U1 and U2/U3/U4) | Their reputation has outgrown their site | Google Maps rating and review count; one homepage fetch; PageSpeed API | Localpipe `/maps-search` + a site-check script + PageSpeed Insights API (free) | M: a state, not an event (see steelman) | H: runs on 3,474 held clean leads plus roofing | H: all free after a $1/1,000 scrape | H: "your reviews are strong, your site shows a Not secure warning" is a fact the owner can check in seconds | **1st** (workflow 1, specced) |
+| 2 | **Hail or high wind in their county** (N1) | Storm brings a wave of homeowners comparing contractors online | NOAA Storm Events, NWS alerts, FEMA declarations | Free public datasets joined to Localpipe by county | H: time-bound, demand spikes now | M: seasonal, regional | H: free | H: "after the storm, homeowners Google before they call" | 2nd (roofing, tree, fencing) |
+| 3 | **Freeze, flood or heavy rain season** (N2/N3) | Emergency searches spike for water damage and wet basements | NWS freeze warnings, FEMA flood declarations, NOAA heavy rain | Same county join | H: time-bound | M: seasonal | H: free | M: water damage pool mostly exhausted; foundation not scraped yet | 3rd (foundation, water damage) |
+| 4 | **Busy season ahead** (N4) | Owners have time to fix the site in the slow months, before the rush | Calendar; per-trade peak months | No tool needed, a send window | M: timing, not need | H: every lead in the trade | H: free | M: needs U6 as a filter to say anything specific | 4th (movers Feb-Apr, spring trades Jan-Mar) |
+| 5 | **No website on Google Maps** (U7) | Reviews with nowhere to send people who want to see the work | Localpipe `website` field empty | Localpipe `has_website: false` | H: clear gap | M: Unverified | L: finding an email without a website is Unverified | H: "plenty of reviews, nowhere to send people" | 5th, small test only |
+
+Not chosen and why: hiring, new registrations, domain expiry, Google Ads and LinkedIn/Clay signals
+fail "data you can get" for these trades (killed list in Matrix 2 below).
+
 ## Phase 0: Company understanding (agent's summary)
 
 | | |
