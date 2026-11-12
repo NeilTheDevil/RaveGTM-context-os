@@ -8,6 +8,7 @@
 | **ICP** | Owner-operated US local trades with high job values ($2k-$30k+), strong Google reviews and a website that undersells them. Priority verticals: foundation/waterproofing, water damage restoration, moving, tree service, fencing/decking, roofing, paving/concrete. Not franchises, not HVAC/plumbing first (most-emailed inboxes). Full ICP: [`context/icp/icp.md`](context/icp/icp.md) |
 | **Buyer** | The owner. No committee. [`context/icp/personas.md`](context/icp/personas.md) |
 | **GitHub repo** | https://github.com/NeilTheDevil/RaveGTM-context-os |
+| **Context OS file** | https://github.com/NeilTheDevil/RaveGTM-context-os/blob/main/CONTEXT-OS.md |
 | **Date** | 2026-11-13 |
 
 ## What I built
@@ -21,7 +22,10 @@ A Context OS in the course layout, filled with real context from Rave's cold-ema
 | GTM Starter Kit skills, playbooks, tools | `.claude/skills/`, `knowledge-base/playbooks/`, `tools/` |
 | Raw research (3 parallel subagents) | [`competitors`](context/docs/research/competitors.md), [`customer voice`](context/docs/research/customer-voice.md), [`signals and market`](context/docs/research/signals-and-market.md) |
 | Synthesis | ICP, persona, [positioning](context/positioning/positioning.md), value proposition, [messaging](context/messaging/messaging.md), [facts](context/messaging/facts.md), brand kit, case studies |
-| `/signal-matrix` | [`context/icp/signal-matrix.md`](context/icp/signal-matrix.md): 7 verticals x website state, 13 signals kept, 7 killed, angle matrix |
+| ICP in five layers, three personas | [`icp.md`](context/icp/icp.md), [`personas.md`](context/icp/personas.md) |
+| System architecture | [`context/docs/gtm-system.md`](context/docs/gtm-system.md): 12 steps, tool and decisions per step, four-pillar check |
+| One-page Context OS | [`CONTEXT-OS.md`](CONTEXT-OS.md) |
+| `/signal-matrix` | [`context/icp/signal-matrix.md`](context/icp/signal-matrix.md): top 5 priority signals scored on the four tests; 7 verticals x website state, 13 signals kept, 7 killed, angle matrix |
 | `/campaign-strategy` | [`output/campaigns/campaign-strategy.md`](output/campaigns/campaign-strategy.md): 26 ideas, 7 Tier 1 |
 | `/build-workflow-spec` | [`strong-reviews-weak-website/workflow-spec.md`](output/campaigns/strong-reviews-weak-website/workflow-spec.md): tree service, rating 4.5+ and 25+ reviews, routed by which free site check fails (no HTTPS / old footer year / slow on phones) |
 | `/campaign-copy` | 3-email sequence with facts trace and QA, plus a [PlusVibe export](output/campaigns/strong-reviews-weak-website/sequencer-export.md) |

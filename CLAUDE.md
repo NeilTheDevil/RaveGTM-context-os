@@ -16,6 +16,10 @@ builder, not an agency.
 
 | Need | File |
 |---|---|
+| **One-page summary: ICP, 5 signals, architecture, target workflow** | `CONTEXT-OS.md` |
+| GTM system end to end (tools, decisions, feedback loop) | `context/docs/gtm-system.md` |
+| Company facts (internal sources) | `context/docs/research/company.md` |
+| Course build log | `BUILD-LOG.md` |
 | Current state (live campaigns, lead inventory, measured rates) | `context/docs/state.md` |
 | ICP, anti-ICP, vertical ranking | `context/icp/icp.md` |
 | Buyer persona (the owner) | `context/icp/personas.md` |
