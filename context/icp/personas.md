@@ -1,41 +1,44 @@
-# Rave — Buyer Persona
+# Rave — Buyer Personas
 
-There is one buyer: **the owner**. There is no champion, no committee, no procurement. The
-person who reads the email is the person who pays.
+In an owner-run trade the **champion and the economic buyer are the same person: the owner.**
+There is no buying committee. The two other personas are the people who stand between the email
+and the owner, or whose opinion the owner asks for. Pains and objections come from
+`context/docs/research/customer-voice.md` (a thin, adjacent-trade sample; see its caveats) and
+from Rave's live campaigns (internal).
 
-## The owner-operator
+## 1. The owner-operator (champion + economic buyer)
 
 | | |
 |---|---|
-| Title | Owner, Founder, President, sometimes "Operations" in a family business |
-| Age | Target roughly 35-50 and actively growing (older owners near retirement are anti-ICP) |
-| Day | On job sites most of the day, answers calls from the truck, does quotes and email at night |
-| How they get work | Referrals, Google Maps / Google Business Profile, reviews, sometimes Local Services Ads or Angi/Thumbtack |
-| Website history | Built years ago by a nephew, a freelancer, a builder like Wix/GoDaddy, or an agency on a monthly contract |
-| Reads email on | Phone, between jobs |
+| Titles | Owner, Founder, President, "Operations" in a family business |
+| Profile | ~35-50, actively growing (older owners near retirement are anti-ICP). On job sites all day, quotes and email at night, reads email on the phone |
+| Measured on | Booked jobs, cash flow, a full schedule, reputation in town |
+| Top pains (their words) | Paid a web company and got "no leads, no calls"; locked into a contract; lost the site when they left. Quotes in customer-voice.md |
+| Starts looking when | A slow season, a competitor showing up above them on Google, a bad experience with their current web provider, a busy season coming |
+| Objections | "My site is fine, I get referrals." "Sounds like a scam." "Web people are expensive and slow." "I got burned before." "Too busy." |
+| What wins them | Seeing a finished design with their own name and review on it; one price; live in a week; one real person |
 
-## What they want
+## 2. The office manager / spouse (influencer and gatekeeper) — INFERRED
 
-- More booked jobs from the people already finding them on Google.
-- Not to be locked into a contract or a long agency project.
-- To deal with one real person who answers.
-- Something they can judge in seconds, without trusting a stranger's word.
+| | |
+|---|---|
+| Titles | Office Manager, Bookkeeper, often the owner's spouse or a family member |
+| Role | Reads the info@ inbox, answers the phone, handles the books and vendor bills |
+| Measured on | Calls answered, quotes sent, bills paid on time |
+| Top pains | Phone calls asking basic questions the website should answer; paying monthly for a site nobody updates |
+| Objections | "Another marketing email." Forwards only what looks real and cheap to try |
+| How to reach | Business email on the work domain. The copy must make sense to someone forwarding it to the owner |
 
-## What they fear (objection map)
+INFERRED from how these businesses run (72% of the earlier general-email roofing list was role
+inboxes such as info@, per state.md). Not interviewed.
 
-| They think | Why | Answer |
-|---|---|---|
-| "My site is fine, I get jobs." | Referrals hide the leak | Show, don't tell: "Not broken, but losing you jobs." |
-| "This sounds like a scam." | Cold rebuild offers look sketchy | Real name, quote their actual review, short no-pressure call, a live link |
-| "Web people are expensive and slow." | Past quote was $5-10k over months | "Up by next week", one price |
-| "I got burned before." | Paid for a pretty site that produced nothing | Lead with calls and booked jobs, not looks |
-| "I'm too busy." | Out working all day | One short call, everything handled |
-| "I don't want more attention." | Prefers under the radar | Deprioritize. Focus on owners trying to grow |
+## 3. The "web person" (influencer) — INFERRED
 
-## How to write to them
+| | |
+|---|---|
+| Who | Whoever built the current site: a nephew, a freelancer, a builder subscription, or an agency rep |
+| Role | The owner asks them "is this worth it?" or feels loyal to them |
+| Objection | "We already have someone for that." |
+| How to handle | Never attack the current builder. Point at what homeowners see (a "Not secure" warning, an old footer year), which is a fact, not a judgment of the person |
 
-Owner to owner. Short, plain, one idea, something free with nothing owed. Flatter the work,
-indict the site, never the owner. Use their words: "jobs", "calls", "homeowners", "Google",
-not "conversion rate", "UX" or "digital presence".
-
-Raw evidence for these points: `context/docs/research/customer-voice.md`.
+INFERRED. Not observed in replies yet. Revisit once more replies come in.

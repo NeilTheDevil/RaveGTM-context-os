@@ -9,6 +9,21 @@ Source: `context/docs/source/icp-and-offer-digest.md` (Outbound Strategy Brief, 
 US owner-run local service businesses with **high job values**, **real customer reviews**
 and **a website that undersells them**, in trades that web agencies email less often.
 
+## The five layers
+
+| Layer | Rave's ICP | Source |
+|---|---|---|
+| 1. Firmographic | US, owner-operated local trade, 1-25 staff, job value $2k-$30k+, independent (not a franchise), priority verticals below | Internal: brief digest; franchise rates measured (decision log #24-28) |
+| 2. Technographic | Has a website that undersells them: no HTTPS, copyright footer 2022 or older, or PageSpeed mobile score under 50. Listed on Google Maps. Builder (Wix/GoDaddy) is a weak marker: under 1% of the clean pool (open item 6) | `signal-matrix.md` U2-U5; `research/signals-and-market.md` |
+| 3. Intent signals | Strong reviews (4.5+ rating, 25+ reviews) with a weak site; storm, freeze or flood events in their county; the weeks before their busy season | `signal-matrix.md` priority signals |
+| 4. Persona | The owner decides and pays. Office manager or spouse often reads the inbox first | `personas.md` |
+| 5. Engagement readiness | Recent reviews (busy now, so more people are checking them out); business email on a work domain, not Gmail; owner named in the listing | `signal-matrix.md` U8; state.md (owner-email pivot, decision 38) |
+
+**Challenge pass (sceptical sales lead, 2026-11-13).** Weakest part: "a website that undersells
+them" was a feeling, not a filter. Fixed by tying layer 2 to three checks a script can run. Still
+weak, and left as open questions: roofing ticket size is inferred, and nobody has measured how
+many strong-review businesses actually have weak sites.
+
 ## Firmographics
 
 | Attribute | ICP | Why |
