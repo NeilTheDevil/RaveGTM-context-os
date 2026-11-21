@@ -1,0 +1,138 @@
+{
+  "title": "How the Strong reviews, weak website workflow moves through Clay",
+  "subtitle": "Each row is a table. Follow the numbers left to right. Paid steps only run on rows that passed every step before them.",
+  "lanes": [
+    {
+      "id": "excl",
+      "name": "Exclusions",
+      "note": "you upload it\nkeyed on domain",
+      "dashed": true
+    },
+    {
+      "id": "co",
+      "name": "Companies",
+      "note": "one row per company.\nThe main table.",
+      "main": true
+    }
+  ],
+  "steps": [
+    {
+      "id": "x",
+      "n": "0",
+      "lane": "excl",
+      "col": 2,
+      "title": "Never contact",
+      "text": "Davey, Bartlett, SavATree, Monster Tree, Rave itself",
+      "cost": null
+    },
+    {
+      "id": "s1",
+      "n": "1",
+      "lane": "co",
+      "col": 1,
+      "title": "Find tree services",
+      "text": "Free Clay search: tree service, US HQ, 1-50 staff",
+      "cost": "free"
+    },
+    {
+      "id": "s2",
+      "n": "2",
+      "lane": "co",
+      "col": 2,
+      "title": "Free checks",
+      "text": "Has a domain, small enough, not excluded, not a franchise name",
+      "cost": "free"
+    },
+    {
+      "id": "s3",
+      "n": "3",
+      "lane": "co",
+      "col": 3,
+      "title": "Google reviews",
+      "text": "Rating and review count. Strong = 4.5+ from 25+",
+      "cost": "paid"
+    },
+    {
+      "id": "s4",
+      "n": "4",
+      "lane": "co",
+      "col": 4,
+      "title": "Scrape homepage",
+      "text": "https scrape, http fallback, footer year, emails on page",
+      "cost": "paid"
+    },
+    {
+      "id": "s5",
+      "n": "5",
+      "lane": "co",
+      "col": 5,
+      "title": "Two AI checks",
+      "text": "Independent tree service? Then reviews shown, click-to-call, quote request (AI)",
+      "cost": "paid"
+    },
+    {
+      "id": "s6",
+      "n": "6",
+      "lane": "co",
+      "col": 6,
+      "title": "Route to a cell",
+      "text": "Out, C1, C2, C4, C5, C6 or Held. Ready to Contact? gate",
+      "cost": "free",
+      "highlight": true
+    },
+    {
+      "id": "s7",
+      "n": "7",
+      "lane": "co",
+      "col": 7,
+      "title": "Find and verify email",
+      "text": "Homepage, then Hunter, then ZeroBounce. Send Ready?",
+      "cost": "paid"
+    },
+    {
+      "id": "s8",
+      "n": "8",
+      "lane": "co",
+      "col": 8,
+      "title": "Views",
+      "text": "Ready to send, Held, Dropped (set in the Clay UI)",
+      "cost": "free"
+    }
+  ],
+  "arrows": [
+    {
+      "from": "s1",
+      "to": "s2"
+    },
+    {
+      "from": "x",
+      "to": "s2",
+      "label": "checked against",
+      "dashed": true
+    },
+    {
+      "from": "s2",
+      "to": "s3"
+    },
+    {
+      "from": "s3",
+      "to": "s4"
+    },
+    {
+      "from": "s4",
+      "to": "s5"
+    },
+    {
+      "from": "s5",
+      "to": "s6"
+    },
+    {
+      "from": "s6",
+      "to": "s7"
+    },
+    {
+      "from": "s7",
+      "to": "s8"
+    }
+  ]
+}

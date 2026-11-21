@@ -388,3 +388,21 @@ Rave Web Studios
 7. **Sequence length 3, waits 3 and 4 days** (day 0, 3, 7).
 8. **Exported to PlusVibe syntax** in `sequencer-export.md` (Phase 3 is optional; PlusVibe is the
    stated sequencer).
+
+---
+
+## Amendment 2026-11-21 (Clay build, course week 2)
+
+**Decided by Neil, 2026-11-21:** the website signal is detected with an **AI site-gap column**, not
+only the free checks. Why: on 50 test rows the free checks found no weak sites (every live site on
+HTTPS; footers auto-update to 2025-2026), and PageSpeed's keyless quota was exhausted.
+
+- New column AI Site Gaps (Gemini 3 Flash, 0.5 credits/row, independent tree services only):
+  reviews_shown, click_to_call, quote_request (yes / no / unclear), biggest_gap, evidence.
+- New routing cells after C1 Not secure and C2 Old footer: **C4 Reviews not shown**,
+  **C5 No click-to-call**, **C6 No quote request**. C3 Slow on phones is held until a PageSpeed key exists.
+- New fit gate: AI Fit Check must say independent_tree_service.
+- Result on 100 rows: 28 Ready (C4 25, C2 2, C6 1), 9 Send Ready. Details:
+  `clay-build/README.md`.
+- **Open:** copy exists only for C1-C3. C4-C6 need copy (C4 is the strongest: a 4.6-4.9 star
+  rating the homepage never shows).

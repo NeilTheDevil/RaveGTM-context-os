@@ -1,0 +1,663 @@
+{
+  "version": 1,
+  "name": "rave-tree-strong-reviews-weak-site",
+  "slug": "rave-tree-strong-reviews-weak-site",
+  "capturedAt": "2026-11-21T14:51:27.615912+00:00",
+  "requires": {
+    "secrets": [],
+    "authAccounts": [
+      "find-emails-for-company",
+      "use-ai",
+      "validate-email"
+    ]
+  },
+  "capturedAuth": {
+    "use-ai": "aa_FfAwz41BuzME",
+    "find-emails-for-company": "aa_HMkzWu8yjnhP",
+    "validate-email": "aa_RKBDnuEnUtm1"
+  },
+  "schema": {
+    "version": "1.0",
+    "exportedAt": "2026-11-21T14:51:27.613196Z",
+    "tableId": "t_0toutzyVjZznkdoRdwU",
+    "columnCount": 41,
+    "columns": [
+      {
+        "index": 0,
+        "name": "New Column",
+        "type": "text",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          }
+        }
+      },
+      {
+        "index": 1,
+        "name": "Company Name",
+        "type": "text",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          }
+        }
+      },
+      {
+        "index": 2,
+        "name": "Domain",
+        "type": "url",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "url"
+          }
+        }
+      },
+      {
+        "index": 3,
+        "name": "Company Size",
+        "type": "text",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          }
+        }
+      },
+      {
+        "index": 4,
+        "name": "Industry",
+        "type": "text",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          }
+        }
+      },
+      {
+        "index": 5,
+        "name": "Location",
+        "type": "text",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          }
+        }
+      },
+      {
+        "index": 6,
+        "name": "Description",
+        "type": "text",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          }
+        }
+      },
+      {
+        "index": 7,
+        "name": "LinkedIn URL",
+        "type": "url",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "url"
+          }
+        }
+      },
+      {
+        "index": 8,
+        "name": "Clay Company ID",
+        "type": "text",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          }
+        }
+      },
+      {
+        "index": 9,
+        "name": "Exclusions Match",
+        "type": "action",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "json"
+          },
+          "actionKey": "lookup-row-in-other-table",
+          "actionVersion": 1,
+          "actionPackageId": "4299091f-3cd3-4d68-b198-0143575f471d",
+          "inputsBinding": [
+            {
+              "name": "tableId",
+              "formulaText": "\"t_0touu00cuQYDcVFtNHX\""
+            },
+            {
+              "name": "fields|targetColumn",
+              "formulaText": "\"f_0touu05TXbAfFhCRKYc\""
+            },
+            {
+              "name": "fields|filterOperator",
+              "formulaText": "\"EQUAL\""
+            },
+            {
+              "name": "fields|rowValue",
+              "formulaText": "{{@Domain}}"
+            }
+          ],
+          "referencedTableId": "t_0touu00cuQYDcVFtNHX"
+        }
+      },
+      {
+        "index": 10,
+        "name": "Is Excluded?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "!!({{@Exclusions Match}}?.[\"Type\"] || {{@Exclusions Match}}?.record?.[\"Type\"])"
+        }
+      },
+      {
+        "index": 11,
+        "name": "Size OK?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "[\"1\",\"2-10\",\"11-50\"].includes({{@Company Size}})"
+        }
+      },
+      {
+        "index": 12,
+        "name": "Franchise Name?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "/davey|bartlett|savatree|monster tree|arbor-?nomics|trugreen|weed man|lawn doctor|the grounds guys|u\\.?s\\. lawns/i.test({{@Company Name}} || \"\")"
+        }
+      },
+      {
+        "index": 13,
+        "name": "Pass Free?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "!!{{@Domain}} && {{@Size OK?}} && !{{@Is Excluded?}} && !{{@Franchise Name?}}"
+        }
+      },
+      {
+        "index": 14,
+        "name": "Google Reviews",
+        "type": "action",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "json"
+          },
+          "actionKey": "company-to-google-review-score",
+          "actionVersion": 1,
+          "actionPackageId": "3282a1c7-6bb0-497e-a34b-32268e104e55",
+          "inputsBinding": [
+            {
+              "name": "companyName",
+              "formulaText": "{{@Company Name}}"
+            },
+            {
+              "name": "companyWebsite",
+              "formulaText": "{{@Domain}}"
+            },
+            {
+              "name": "companyKeyword",
+              "formulaText": "\"tree service\""
+            }
+          ],
+          "conditionalRunFormulaText": "{{@Pass Free?}}"
+        }
+      },
+      {
+        "index": 15,
+        "name": "Google Rating",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "number"
+          },
+          "formulaType": "text",
+          "formulaText": "{{@Google Reviews}}?.rating ?? \"\""
+        }
+      },
+      {
+        "index": 16,
+        "name": "Google Review Count",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "number"
+          },
+          "formulaType": "text",
+          "formulaText": "{{@Google Reviews}}?.reviews ?? \"\""
+        }
+      },
+      {
+        "index": 17,
+        "name": "Strong Reviews?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "Number({{@Google Rating}}) >= 4.5 && Number({{@Google Review Count}}) >= 25"
+        }
+      },
+      {
+        "index": 18,
+        "name": "Scrape Homepage",
+        "type": "action",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "json"
+          },
+          "actionKey": "scrape-website",
+          "actionVersion": 1,
+          "actionPackageId": "4299091f-3cd3-4d68-b198-0143575f471d",
+          "inputsBinding": [
+            {
+              "name": "url",
+              "formulaText": "\"https://\" + {{@Domain}}"
+            }
+          ],
+          "conditionalRunFormulaText": "{{@Strong Reviews?}}"
+        }
+      },
+      {
+        "index": 19,
+        "name": "PageSpeed Mobile",
+        "type": "action",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "json"
+          },
+          "actionKey": "http-api-v2",
+          "actionVersion": 1,
+          "actionPackageId": "4299091f-3cd3-4d68-b198-0143575f471d",
+          "inputsBinding": [
+            {
+              "name": "method",
+              "formulaText": "\"GET\""
+            },
+            {
+              "name": "url",
+              "formulaText": "\"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&url=\" + encodeURIComponent(\"https://\" + {{@Domain}})"
+            }
+          ],
+          "conditionalRunFormulaText": "{{@Strong Reviews?}}"
+        }
+      },
+      {
+        "index": 20,
+        "name": "Footer Year",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "number"
+          },
+          "formulaType": "text",
+          "formulaText": "Math.max.apply(null, ((String({{@Scrape Homepage}}?.bodyText || \"\").match(/(\u00a9|copyright).{0,80}/i) || [\"\"])[0].match(/(?:19|20)[0-9]{2}/g) || [\"0\"]).map(Number)) || \"\""
+        }
+      },
+      {
+        "index": 21,
+        "name": "Page Emails On Domain",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "(({{@Scrape Homepage}}?.emails || []).filter(e => String(e).toLowerCase().endsWith(\"@\" + {{@Domain}}))).join(\", \")"
+        }
+      },
+      {
+        "index": 22,
+        "name": "AI Fit Check",
+        "type": "action",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "json"
+          },
+          "actionKey": "use-ai",
+          "actionVersion": 1,
+          "actionPackageId": "67ba01e9-1898-4e7d-afe7-7ebe24819a57",
+          "inputsBinding": [
+            {
+              "name": "useCase",
+              "formulaText": "\"use-ai\""
+            },
+            {
+              "name": "model",
+              "formulaText": "\"gemini-3-flash\""
+            },
+            {
+              "name": "prompt",
+              "formulaText": "\"You check whether a company is an independent, owner-run tree service business in the United States. Use only the data below. Answer with JSON only, no code fences.\\nCompany name: \" + ({{@Company Name}} || \"\") + \"\\nWebsite: \" + ({{@Domain}} || \"\") + \"\\nLinkedIn description: \" + String({{@Description}} || \"\").slice(0, 800) + \"\\nHomepage title: \" + ({{@Scrape Homepage}}?.title || \"\") + \"\\nHomepage text (start): \" + String({{@Scrape Homepage}}?.bodyText || \"\").slice(0, 2500) + \"\\n\\nReturn exactly: {\\\"business_type\\\": one of [\\\"independent_tree_service\\\", \\\"franchise_or_chain\\\", \\\"not_tree_service\\\", \\\"unclear\\\"], \\\"offers_tree_work\\\": one of [\\\"yes\\\", \\\"no\\\", \\\"unclear\\\"], \\\"evidence\\\": a short quote or fact from the data above that supports the answer}. independent_tree_service = a local company that does tree removal, trimming or arborist work itself and is not part of a national franchise. If tree work is only a minor add-on to landscaping or lawn care, use not_tree_service. If the data is too thin, use unclear.\""
+            }
+          ],
+          "conditionalRunFormulaText": "{{@Strong Reviews?}} && !!{{@Scrape Homepage}}",
+          "customRateLimitRules": {
+            "timeWindow": [
+              {
+                "limit": 17,
+                "bucket": [
+                  "PRIVATE_AUTH_KEY",
+                  "CUSTOM_KEY"
+                ],
+                "durationMs": 1000
+              },
+              {
+                "limit": 1000,
+                "bucket": [
+                  "GLOBAL"
+                ],
+                "durationMs": 1000
+              }
+            ]
+          },
+          "authAccountId": "{{AUTH:use-ai}}"
+        }
+      },
+      {
+        "index": 23,
+        "name": "Business Type",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "JSON.parse((String({{@AI Fit Check}}?.response || \"{}\").replace(/```json/g, \"\").replace(/```/g, \"\").trim()) || \"{}\")?.business_type || \"\""
+        }
+      },
+      {
+        "index": 24,
+        "name": "AI Evidence",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "JSON.parse((String({{@AI Fit Check}}?.response || \"{}\").replace(/```json/g, \"\").replace(/```/g, \"\").trim()) || \"{}\")?.evidence || \"\""
+        }
+      },
+      {
+        "index": 25,
+        "name": "Not Secure?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "{{@Strong Reviews?}} && !{{@Scrape Homepage}} && !!{{@Scrape HTTP Fallback}}"
+        }
+      },
+      {
+        "index": 26,
+        "name": "Cell",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "!{{@Strong Reviews?}} ? \"Out: reviews not strong\" : !{{@Scrape Homepage}} && !{{@Scrape HTTP Fallback}} ? \"Out: site down\" : {{@Business Type}} !== \"independent_tree_service\" ? \"Out: not an independent tree service\" : {{@Not Secure?}} ? \"C1 Not secure\" : ({{@Footer Year}} && Number({{@Footer Year}}) <= 2022) ? \"C2 Old footer\" : {{@Biggest Site Gap}} === \"reviews_not_shown\" ? \"C4 Reviews not shown\" : {{@Biggest Site Gap}} === \"no_click_to_call\" ? \"C5 No click-to-call\" : {{@Biggest Site Gap}} === \"no_quote_request\" ? \"C6 No quote request\" : \"Held: no gap found (C3 slow on phones needs a PageSpeed key)\""
+        }
+      },
+      {
+        "index": 27,
+        "name": "Ready to Contact?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "{{@Pass Free?}} && {{@Strong Reviews?}} && {{@Business Type}} === \"independent_tree_service\" && /^C[12456] /.test({{@Cell}} || \"\")"
+        }
+      },
+      {
+        "index": 28,
+        "name": "Scrape HTTP Fallback",
+        "type": "action",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "json"
+          },
+          "actionKey": "scrape-website",
+          "actionVersion": 1,
+          "actionPackageId": "4299091f-3cd3-4d68-b198-0143575f471d",
+          "inputsBinding": [
+            {
+              "name": "url",
+              "formulaText": "\"http://\" + {{@Domain}}"
+            }
+          ],
+          "conditionalRunFormulaText": "{{@Strong Reviews?}} && !{{@Scrape Homepage}}"
+        }
+      },
+      {
+        "index": 29,
+        "name": "Click-to-Call Links",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "number"
+          },
+          "formulaType": "text",
+          "formulaText": "(({{@Scrape Homepage}}?.links || []).filter(l => /^tel:/i.test(String(l?.href || \"\"))).length)"
+        }
+      },
+      {
+        "index": 30,
+        "name": "Mentions Quote?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "/free (quote|estimate)|get a quote|request a quote|free estimate|estimate/i.test(String({{@Scrape Homepage}}?.bodyText || \"\"))"
+        }
+      },
+      {
+        "index": 31,
+        "name": "AI Site Gaps",
+        "type": "action",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "json"
+          },
+          "actionKey": "use-ai",
+          "actionVersion": 1,
+          "actionPackageId": "67ba01e9-1898-4e7d-afe7-7ebe24819a57",
+          "inputsBinding": [
+            {
+              "name": "useCase",
+              "formulaText": "\"use-ai\""
+            },
+            {
+              "name": "model",
+              "formulaText": "\"gemini-3-flash\""
+            },
+            {
+              "name": "prompt",
+              "formulaText": "\"You review the homepage of a local tree service for three things that turn a Google search into a phone call. Use only the data below. Answer with JSON only, no code fences.\\nCompany: \" + ({{@Company Name}} || \"\") + \"\\nGoogle rating: \" + String({{@Google Rating}} || \"\") + \" from \" + String({{@Google Review Count}} || \"\") + \" reviews\" + \"\\nClick-to-call (tel:) links on the page: \" + String({{@Click-to-Call Links}}) + \"\\nPage mentions a quote or estimate: \" + String({{@Mentions Quote?}}) + \"\\nHomepage text (start): \" + String({{@Scrape Homepage}}?.bodyText || \"\").slice(0, 3000) + \"\\n\\nReturn exactly: {\\\"reviews_shown\\\": one of [\\\"yes\\\", \\\"no\\\", \\\"unclear\\\"], \\\"click_to_call\\\": one of [\\\"yes\\\", \\\"no\\\", \\\"unclear\\\"], \\\"quote_request\\\": one of [\\\"yes\\\", \\\"no\\\", \\\"unclear\\\"], \\\"biggest_gap\\\": one of [\\\"reviews_not_shown\\\", \\\"no_click_to_call\\\", \\\"no_quote_request\\\", \\\"none\\\", \\\"unclear\\\"], \\\"evidence\\\": one short fact from the data above that shows the gap, or \\\"none\\\"}. reviews_shown = yes only if the page shows customer reviews, star ratings or testimonials. click_to_call = yes if there is at least one tel: link. quote_request = yes if visitors can ask for a quote or estimate. biggest_gap = reviews_not_shown when the Google rating is strong but the page shows no reviews; otherwise the first missing item in this order: click_to_call, quote_request; none if all three are present.\""
+            }
+          ],
+          "conditionalRunFormulaText": "{{@Business Type}} === \"independent_tree_service\" && !!{{@Scrape Homepage}}",
+          "customRateLimitRules": {
+            "timeWindow": [
+              {
+                "limit": 17,
+                "bucket": [
+                  "PRIVATE_AUTH_KEY",
+                  "CUSTOM_KEY"
+                ],
+                "durationMs": 1000
+              },
+              {
+                "limit": 1000,
+                "bucket": [
+                  "GLOBAL"
+                ],
+                "durationMs": 1000
+              }
+            ]
+          },
+          "authAccountId": "{{AUTH:use-ai}}"
+        }
+      },
+      {
+        "index": 32,
+        "name": "Biggest Site Gap",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "JSON.parse((String({{@AI Site Gaps}}?.response || \"{}\").replace(/```json/g, \"\").replace(/```/g, \"\").trim()) || \"{}\")?.biggest_gap || \"\""
+        }
+      },
+      {
+        "index": 33,
+        "name": "Site Gap Evidence",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "JSON.parse((String({{@AI Site Gaps}}?.response || \"{}\").replace(/```json/g, \"\").replace(/```/g, \"\").trim()) || \"{}\")?.evidence || \"\""
+        }
+      },
+      {
+        "index": 34,
+        "name": "Find Emails (Hunter)",
+        "type": "action",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "json"
+          },
+          "actionKey": "find-emails-for-company",
+          "actionVersion": 1,
+          "actionPackageId": "9cfc7721-5c91-423b-a0b0-4cc1f42c6089",
+          "inputsBinding": [
+            {
+              "name": "domain",
+              "formulaText": "{{@Domain}}"
+            },
+            {
+              "name": "limit",
+              "formulaText": "5"
+            }
+          ],
+          "conditionalRunFormulaText": "{{@Ready to Contact?}} && !{{@Page Emails On Domain}}",
+          "authAccountId": "{{AUTH:find-emails-for-company}}"
+        }
+      },
+      {
+        "index": 35,
+        "name": "Best Email",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "email"
+          },
+          "formulaType": "text",
+          "formulaText": "(String({{@Page Emails On Domain}} || \"\").split(\",\")[0] || \"\").trim() || (({{@Find Emails (Hunter)}}?.emails || [])[0]?.value || \"\")"
+        }
+      },
+      {
+        "index": 36,
+        "name": "Email Source",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "{{@Page Emails On Domain}} ? \"Homepage\" : ({{@Best Email}} ? \"Hunter\" : \"Not found\")"
+        }
+      },
+      {
+        "index": 37,
+        "name": "Verify Email (ZeroBounce)",
+        "type": "action",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "json"
+          },
+          "actionKey": "validate-email",
+          "actionVersion": 1,
+          "actionPackageId": "8f0d2dc0-a6b4-4b84-9aad-a330b4a4586a",
+          "inputsBinding": [
+            {
+              "name": "email",
+              "formulaText": "{{@Best Email}}"
+            },
+            {
+              "name": "onlySafe",
+              "formulaText": "true"
+            }
+          ],
+          "conditionalRunFormulaText": "{{@Ready to Contact?}} && !!{{@Best Email}}",
+          "authAccountId": "{{AUTH:validate-email}}"
+        }
+      },
+      {
+        "index": 38,
+        "name": "Email Matches Company?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "String({{@Best Email}} || \"\").toLowerCase().endsWith(\"@\" + String({{@Domain}} || \"\").toLowerCase())"
+        }
+      },
+      {
+        "index": 39,
+        "name": "Email Status",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "String({{@Verify Email (ZeroBounce)}}?.status || {{@Verify Email (ZeroBounce)}}?.result || \"\")"
+        }
+      },
+      {
+        "index": 40,
+        "name": "Send Ready?",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "boolean"
+          },
+          "formulaType": "text",
+          "formulaText": "{{@Ready to Contact?}} && {{@Email Matches Company?}} && /^valid$/i.test({{@Email Status}} || \"\")"
+        }
+      }
+    ]
+  }
+}
