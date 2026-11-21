@@ -39,10 +39,14 @@ checks each one's Google reviews and labels it *ready for review*, *needs resear
 writing the answer back onto the record (tested on one company).
 
 ## 4. HubSpot (week 3)
-Clay sends each Fit company to HubSpot through a webhook. HubSpot waits 15 minutes, **creates a
-deal**, and marks the contact as qualified. It then branches by website problem so each deal carries
-its **angle** (review callback, outdated site, quote form). The branches are built; the angle step
-is still being tested.
+Fully automatic. For every ready Fit company, Clay looks the contact up in HubSpot, creates it if
+it's missing, and writes **ICP Fit**, **ICP Reason** and the **Angle** onto it. A HubSpot workflow
+starts on "ICP Fit is Meets Criteria and Angle is known", waits a minute, then:
+creates a deal "{Company} – Website rebuild" ($2,000), sets the contact to MQL, branches by angle,
+copies the angle onto the deal and creates a task ("Add to PlusVibe campaign: Review callback copy").
+
+**Result (2026-11-21): 20 deals**, 17 Review callback, 2 Outdated site, 1 Quote form; 20 contacts
+at MQL; 20 tasks. No hand-entered data.
 
 ## What I learned
 - Design the system before touching tools. The spec decided every column.
