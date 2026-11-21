@@ -1,0 +1,31 @@
+{
+  "title": "How the PaidHR workflow moves through Clay",
+  "subtitle": "Each row is a table. Follow the numbers left to right. Paid steps only run on rows that passed every step before them.",
+  "lanes": [
+    {"id": "excl", "name": "Exclusions", "note": "you upload it", "dashed": true},
+    {"id": "hr", "name": "HR Leaders", "note": "one row per person.\nThe main table.", "main": true},
+    {"id": "co", "name": "Companies", "note": "one row per company"},
+    {"id": "team", "name": "HR Team", "note": "other HR people at\nthose companies", "dashed": true}
+  ],
+  "steps": [
+    {"id": "x", "n": "0", "lane": "excl", "col": 2, "title": "Never contact", "text": "Customers, partners, investors, competitors", "cost": null},
+    {"id": "s1", "n": "1", "lane": "hr", "col": 1, "title": "Find new HR leaders", "text": "Clay people search: NG, KE, GH, started in the last 6 months", "cost": "free"},
+    {"id": "s2", "n": "2", "lane": "hr", "col": 2, "title": "Free checks", "text": "Right title, 6 months or less in role, not on the never-contact list", "cost": "free"},
+    {"id": "s3", "n": "3", "lane": "co", "col": 3, "title": "Send each company once", "text": "Duplicates removed, so you pay per company, not per person", "cost": "free"},
+    {"id": "s4", "n": "4", "lane": "co", "col": 4, "title": "Enrich company", "text": "HQ country, staff count, industry. In the ICP? Deskless? (AI)", "cost": "paid"},
+    {"id": "s5", "n": "5", "lane": "team", "col": 5, "title": "Count other HR people", "text": "People search at those companies. Zero means first HR hire", "cost": "free"},
+    {"id": "s6", "n": "6", "lane": "hr", "col": 6, "title": "Check the person", "text": "Read company facts back. Enrich person: did they join from another company?", "cost": "paid"},
+    {"id": "s7", "n": "7", "lane": "hr", "col": 7, "title": "Route to a cell", "text": "Country x workforce = C1 to C6. Only C1 and C2 send now", "cost": "free", "highlight": true},
+    {"id": "s8", "n": "8", "lane": "hr", "col": 8, "title": "Email and copy", "text": "Find and verify the email, write the 4 lines, push to a paused sequencer", "cost": "paid"}
+  ],
+  "arrows": [
+    {"from": "s1", "to": "s2"},
+    {"from": "x", "to": "s2", "label": "checked against", "dashed": true},
+    {"from": "s2", "to": "s3"},
+    {"from": "s3", "to": "s4"},
+    {"from": "s4", "to": "s5"},
+    {"from": "s5", "to": "s6", "label": "company facts go back\nto each person"},
+    {"from": "s6", "to": "s7"},
+    {"from": "s7", "to": "s8"}
+  ]
+}
