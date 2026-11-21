@@ -20,6 +20,8 @@ builder, not an agency.
 | GTM system end to end (tools, decisions, feedback loop) | `context/docs/gtm-system.md` |
 | Company facts (internal sources) | `context/docs/research/company.md` |
 | Course build log | `BUILD-LOG.md` |
+| The build story: what went wrong and how it was fixed | `HOW-WE-GOT-HERE.md` |
+| One-page overview of the whole build | `WHAT-I-BUILT.md` |
 | Clay table build (README, guide, diagram, ClayBP blueprint) | `output/campaigns/strong-reviews-weak-website/clay-build/` |
 | Clay Audiences: tree service TAM + enrichment workflow | `output/audiences/` |
 | TAM counts per trade from Clay search | `context/docs/research/tam-clay-search.md` |
