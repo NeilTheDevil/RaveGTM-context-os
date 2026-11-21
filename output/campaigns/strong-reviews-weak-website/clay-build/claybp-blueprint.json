@@ -2,7 +2,7 @@
   "version": 1,
   "name": "rave-tree-strong-reviews-weak-site",
   "slug": "rave-tree-strong-reviews-weak-site",
-  "capturedAt": "2026-11-21T14:51:27.615912+00:00",
+  "capturedAt": "2026-11-21T15:10:06.971966+00:00",
   "requires": {
     "secrets": [],
     "authAccounts": [
@@ -18,9 +18,9 @@
   },
   "schema": {
     "version": "1.0",
-    "exportedAt": "2026-11-21T14:51:27.613196Z",
+    "exportedAt": "2026-11-21T15:10:06.969069Z",
     "tableId": "t_0toutzyVjZznkdoRdwU",
-    "columnCount": 41,
+    "columnCount": 43,
     "columns": [
       {
         "index": 0,
@@ -656,6 +656,30 @@
           },
           "formulaType": "text",
           "formulaText": "{{@Ready to Contact?}} && {{@Email Matches Company?}} && /^valid$/i.test({{@Email Status}} || \"\")"
+        }
+      },
+      {
+        "index": 41,
+        "name": "ICP Fit",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "!{{@Pass Free?}} ? \"Not fit\" : ({{@Google Rating}} === \"\" || {{@Google Rating}} == null) ? \"Unknown\" : !{{@Strong Reviews?}} ? \"Not fit\" : [\"not_tree_service\", \"franchise_or_chain\"].includes({{@Business Type}}) ? \"Not fit\" : {{@Business Type}} === \"independent_tree_service\" ? \"Fit\" : \"Unknown\""
+        }
+      },
+      {
+        "index": 42,
+        "name": "ICP Reason",
+        "type": "formula",
+        "typeSettings": {
+          "dataTypeSettings": {
+            "type": "text"
+          },
+          "formulaType": "text",
+          "formulaText": "!{{@Pass Free?}} ? (\"Fails free checks: \" + (!{{@Size OK?}} ? \"size outside 1-50 staff. \" : \"\") + ({{@Is Excluded?}} ? \"on the exclusions list. \" : \"\") + ({{@Franchise Name?}} ? \"franchise name. \" : \"\") + (!{{@Domain}} ? \"no website. \" : \"\")) : ({{@Google Rating}} === \"\" || {{@Google Rating}} == null) ? \"No Google reviews found, so review strength is unknown.\" : !{{@Strong Reviews?}} ? (\"Google reviews below the ICP bar (4.5+ from 25+): \" + {{@Google Rating}} + \" from \" + {{@Google Review Count}} + \" reviews.\") : {{@Business Type}} === \"independent_tree_service\" ? (\"Independent US tree service, 1-50 staff, \" + {{@Google Rating}} + \" stars from \" + {{@Google Review Count}} + \" reviews. AI evidence: \" + String({{@AI Evidence}} || \"\").slice(0, 160)) : {{@Business Type}} === \"not_tree_service\" ? (\"Strong reviews, but not an independent tree service: \" + String({{@AI Evidence}} || \"\").slice(0, 160)) : {{@Business Type}} === \"franchise_or_chain\" ? (\"Franchise or chain: \" + String({{@AI Evidence}} || \"\").slice(0, 160)) : \"Strong reviews, but the business type could not be checked (site down or AI unclear).\""
         }
       }
     ]

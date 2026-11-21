@@ -29,13 +29,14 @@ Weekly feedback ◄─ CRM ◄─ Reply handling ◄─ Sequence ◄─ Verify e
 ### 3. Find companies
 - **What:** Pull every business in a trade and region from Google Maps. B2B databases miss these businesses.
 - **Tool:** Localpipe `/maps-search` ($1 per 1,000), `tools/localpipe-pipeline/`. **Status:** Live.
+  Also Clay's free company search, saved to Clay Audiences as the TAM segment (837 tree services). **Status:** Built 2026-11-21.
 - **Decisions:**
   - Already pulled before (place_id seen)? Yes → skip. No → keep.
   - Job still shows "processing 0/N" after an hour? Keep polling; that is the queue, not a failure (agent note 1).
 
 ### 4. Enrich (company)
 - **What:** Reviews for personalization; site checks for routing.
-- **Tool:** Localpipe `/scrape-reviews-api` (free); homepage fetch script (HTTPS, footer year, builder); PageSpeed Insights API (free). **Status:** Reviews Live; site checks Planned.
+- **Tool:** Clay table (Google reviews 0.2, homepage scrape 0.1, AI Fit Check and AI Site Gaps 0.5 each, Gemini 3 Flash); Localpipe reviews endpoint (free) as the alternative. **Status:** Built and run on 100 rows, 2026-11-21. PageSpeed needs an API key.
 - **Decision:** Site loads? No → exclude (cannot state a fact about it). Yes → record the three checks.
 
 ### 5. ICP fit check
@@ -49,7 +50,7 @@ Weekly feedback ◄─ CRM ◄─ Reply handling ◄─ Sequence ◄─ Verify e
 ### 6. Route by segment
 - **What:** Each lead goes to the first site check it fails; each route is its own campaign with its own angle.
 - **Tool:** Script on the enriched CSV. **Status:** Planned.
-- **Decisions:** No HTTPS → "Not secure" campaign. Else footer year ≤ 2022 → "Old footer" campaign. Else PageSpeed mobile < 50 → "Slow on phones" campaign. Else (site passes all three) → not in workflow 1; held for broad campaigns.
+- **Decisions:** No HTTPS → C1 Not secure. Else footer year ≤ 2022 → C2 Old footer. Else AI site gap: reviews not shown → C4; no click-to-call → C5; no quote request → C6. Else held (C3 slow on phones waits for a PageSpeed key). Built as the Clay `Cell` and `Ready to Contact?` formulas, plus `ICP Fit` / `ICP Reason`.
 
 ### 7. Find the person
 - **What:** The owner's name, so the email is to a person.
@@ -78,7 +79,7 @@ Weekly feedback ◄─ CRM ◄─ Reply handling ◄─ Sequence ◄─ Verify e
 
 ### 11. CRM
 - **What:** One record per business: source signal, route, replies, call, outcome, deal value.
-- **Tool:** HubSpot (course week 3). Today: PlusVibe lead status only. **Status:** Planned.
+- **Tool:** HubSpot (course week 3), connected through the Clay table "HubSpot inbound (webhook)". Today: PlusVibe lead status only. **Status:** Webhook built 2026-11-21; HubSpot workflow side is Neil's.
 - **Decisions:** Call booked → deal stage "Call booked". Showed and liked the sample → "Proposal". Paid → "Won", add to case-study candidates. No show → one reminder, then "Lost: no show".
 
 ### 12. Weekly feedback loop into the Context OS

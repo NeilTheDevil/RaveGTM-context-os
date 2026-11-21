@@ -27,11 +27,16 @@ are stronger than their website.**
 
 Full: [`context/icp/icp.md`](context/icp/icp.md) · Personas: [`context/icp/personas.md`](context/icp/personas.md)
 
+**TAM (Clay company search, US HQ, 1-50 staff):** tree service 886 · foundation/waterproofing 3,538 ·
+fencing/decking 13,034 · roofing 18,956+ · water damage 18,150+ · paving/concrete 19,222+ (≈60,900+, a
+floor: Google Maps finds more of these businesses). Tree service saved as a Clay Audience: **837**.
+[`context/docs/research/tam-clay-search.md`](context/docs/research/tam-clay-search.md)
+
 ## Signals: the 5 to build first
 
 | # | Signal | Data source → tool | Why it means "now" |
 |---|---|---|---|
-| 1 | Strong reviews (4.5+, 25+) + weak website | Google Maps → Localpipe; homepage fetch; PageSpeed API | Reputation has outgrown the site; a fact the owner can check |
+| 1 | Strong reviews (4.5+, 25+) + weak website | Google reviews (Clay or Localpipe); homepage scrape; AI site-gap check (reviews not shown, no click-to-call, no quote request) | Reputation has outgrown the site; a fact the owner can check. In the Clay test, 25 of 28 ready rows show none of their reviews on the homepage |
 | 2 | Hail or high wind in their county | NOAA / NWS / FEMA, free | Homeowners compare contractors online after a storm |
 | 3 | Freeze, flood or heavy-rain season | NWS / FEMA / NOAA, free | Emergency searches spike for restoration and basements |
 | 4 | Busy season ahead | Calendar per trade | Slow months are when owners have time to fix the site |
@@ -43,10 +48,10 @@ Each scored on the four tests (buying reason, volume, data access, story):
 ## System architecture
 
 ```
-Context OS → Signals → Find companies (Localpipe) → Enrich (reviews, site checks, PageSpeed)
-→ ICP fit check (franchise, rating, US) → Route by site finding → Owner name + email (Localpipe)
-→ Sequence (PlusVibe, 24 inboxes) → Reply handling (template + Calendly) → CRM (HubSpot, planned)
-→ Weekly feedback into this repo
+Context OS → Signals → Find companies (Localpipe or Clay search) → Clay Audiences (TAM segment)
+→ Enrich (Google reviews, homepage scrape, AI fit + site-gap checks) → ICP Fit (franchise, rating, US,
+independent) → Route by site gap → Email (homepage, Hunter, ZeroBounce) → Sequence (PlusVibe)
+→ Reply handling (template + Calendly) → CRM (HubSpot, via Clay webhook) → Weekly feedback into this repo
 ```
 
 Every step with its tool and decisions: [`context/docs/gtm-system.md`](context/docs/gtm-system.md)
@@ -59,8 +64,11 @@ Every step with its tool and decisions: [`context/docs/gtm-system.md`](context/d
 - **Routing:** first failed check decides the campaign: Not secure → Old footer → Slow on phones.
 - **Copy:** 3 emails over 7 days per route, facts-gated (no borrowed results, no "your site is
   already built" claims), PlusVibe export ready.
-- **Status:** STRUCTURE-APPROVED by the agent, pending Neil's review. Before sending: build the
-  tree-service sample at a live link and measure the thresholds on a real list.
+- **Built in Clay (2026-11-21):** 100 rows → 99 pass free checks → 60 strong reviews → 38 ICP Fit
+  (independent tree services) → **28 Ready** (C4 reviews not shown 25, C2 old footer 2, C6 no quote
+  request 1) → 20 emails → **9 Send Ready**. 79.4 credits. Website signal is the AI site-gap check
+  (Neil, 2026-11-21). [`clay-build/README.md`](output/campaigns/strong-reviews-weak-website/clay-build/README.md)
+- **Before sending:** build the tree-service sample at a live link; write copy for C4-C6.
 
 Spec: [`output/campaigns/strong-reviews-weak-website/workflow-spec.md`](output/campaigns/strong-reviews-weak-website/workflow-spec.md)
 

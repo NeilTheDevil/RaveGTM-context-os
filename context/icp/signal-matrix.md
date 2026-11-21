@@ -37,6 +37,11 @@ pass runs on a real list.
 | 4 | **Busy season ahead** (N4) | Owners have time to fix the site in the slow months, before the rush | Calendar; per-trade peak months | No tool needed, a send window | M: timing, not need | H: every lead in the trade | H: free | M: needs U6 as a filter to say anything specific | 4th (movers Feb-Apr, spring trades Jan-Mar) |
 | 5 | **No website on Google Maps** (U7) | Reviews with nowhere to send people who want to see the work | Localpipe `website` field empty | Localpipe `has_website: false` | H: clear gap | M: Unverified | L: finding an email without a website is Unverified | H: "plenty of reviews, nowhere to send people" | 5th, small test only |
 
+**Update 2026-11-21 (Clay build):** signal 1's free site checks (U2 HTTPS, U3 footer year) found
+almost no weak sites in 100 tree services, and PageSpeed (U4) needs an API key. Neil switched the
+detector to an AI site-gap column; result: 28 ready, 25 of them "reviews not shown". See
+`output/campaigns/strong-reviews-weak-website/workflow-spec.md` (amendment).
+
 Not chosen and why: hiring, new registrations, domain expiry, Google Ads and LinkedIn/Clay signals
 fail "data you can get" for these trades (killed list in Matrix 2 below).
 

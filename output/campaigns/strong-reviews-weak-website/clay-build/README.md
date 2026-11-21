@@ -32,6 +32,12 @@ Auto-run is off on both, read back after creation.
 6. Routing: **Cell**, **Ready to Contact?**
 7. Email waterfall: homepage email (free) → Hunter → ZeroBounce (only-safe) → Email Matches Company? → **Send Ready?**
 
+8. ICP verdict: **ICP Fit** (Fit 38 / Not fit 51 / Unknown 11) and **ICP Reason** (plain-English, quotes the rating, review count and AI evidence). Free formulas from `context/icp/icp.md`.
+
+A third table, **HubSpot inbound (webhook)**, has a Clay webhook source (URL kept out of the repo)
+with extraction columns for HubSpot record id, company, domain, email, first and last name.
+Auto-run is on for that table only so webhook rows can arrive; it has no paid columns.
+
 Every paid column has a run condition on the gate before it. Every column has a plain-English description in Clay.
 
 ## Funnel (100 rows from the free Clay search)

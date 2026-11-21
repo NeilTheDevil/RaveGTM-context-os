@@ -20,6 +20,9 @@ builder, not an agency.
 | GTM system end to end (tools, decisions, feedback loop) | `context/docs/gtm-system.md` |
 | Company facts (internal sources) | `context/docs/research/company.md` |
 | Course build log | `BUILD-LOG.md` |
+| Clay table build (README, guide, diagram, ClayBP blueprint) | `output/campaigns/strong-reviews-weak-website/clay-build/` |
+| Clay Audiences: tree service TAM + enrichment workflow | `output/audiences/` |
+| TAM counts per trade from Clay search | `context/docs/research/tam-clay-search.md` |
 | Current state (live campaigns, lead inventory, measured rates) | `context/docs/state.md` |
 | ICP, anti-ICP, vertical ranking | `context/icp/icp.md` |
 | Buyer persona (the owner) | `context/icp/personas.md` |
@@ -43,14 +46,19 @@ builder, not an agency.
 ## Skills (type `/` to list)
 
 Research to copy, in order: `/signal-matrix` → `/campaign-strategy` → `/build-workflow-spec` →
-`/campaign-copy` → `/campaign-qa`. Clay skills (`/build-clay` and friends) come from the GTM
-Starter Kit and are not used yet: Rave sources from Google Maps through Localpipe, not Clay.
+`/campaign-copy` → `/campaign-qa`. Spec to Clay: `/clay-build-plan` writes the build guide and
+diagram. The Clay table itself is built with ClayBP (Rex + Clay CLI + `claybp` blueprints).
 
 ## Tools and how to connect
 
 - **CLI or API first, MCP last.** Bulk work (scraping, enriching, loading thousands of leads)
   goes through an API or CLI so it does not bloat the context window.
-- Localpipe: API, scripts in `tools/localpipe-pipeline/`. Data source for every lead.
+- Localpipe: API, scripts in `tools/localpipe-pipeline/`. Main lead source (Google Maps).
+- Clay: Treford workspace "Neil's Workspace" (1102039). Clay CLI (`clay login`) for searches,
+  Audiences and workflows; ClayBP for tables (blueprint `rave-tree-strong-reviews-weak-site`).
+  Auto-run off, prove paid columns on 1 row (AI on 3), quote credits before any paid run.
+- HubSpot: CRM. Records arrive through the Clay table "HubSpot inbound (webhook)" (URL kept out
+  of this repo).
 - PlusVibe: sequencer, API key in `.env`.
 - treg.to: CLI, logged in per project. Paid calls need Neil's go first, with the price shown.
 

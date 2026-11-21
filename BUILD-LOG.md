@@ -32,6 +32,13 @@ A Context OS in the course layout, filled with real context from Rave's cold-ema
 | Ported from the live system | [state](context/docs/state.md), [open items](weekly-priorities/open-items.md), [agent notes](knowledge-base/learnings/agent-notes.md), [decision summary](knowledge-base/learnings/decision-log-summary.md), live copy, [Localpipe lead pipeline](tools/localpipe-pipeline/) |
 | Meeting notes, priorities, work log | [`meetings/`](meetings/), [`weekly-priorities/2026-W46.md`](weekly-priorities/2026-W46.md), [`work-log/2026-W46.md`](work-log/2026-W46.md) |
 
+## Week 2 and 2B (2026-11-21, submitted late)
+
+| Week | Deliverable | Where |
+|---|---|---|
+| 2 | Clay table "Rave \| Strong reviews, weak website \| Tree service": 100 rows → 99 pass free checks → 60 strong reviews → 38 ICP Fit → 28 Ready → 20 emails → 9 Send Ready. 79.4 credits | [`clay-build/README.md`](output/campaigns/strong-reviews-weak-website/clay-build/README.md), guide + diagram in the same folder |
+| 2B | Audience segment "Rave TAM \| US tree services, 1-50 staff" (837) + workflow (segment trigger → Google reviews → route → write back), tested on 1 record, unpublished | [`output/audiences/`](output/audiences/2026-11-21-tree-service-tam-audience.md) |
+
 ## Tools and how they connect
 
 Localpipe (Google Maps data, API), PlusVibe (sequencer, API), treg.to (CLI), Claude Code.
