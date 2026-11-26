@@ -55,6 +55,7 @@ independent) → Route by site gap → Email (homepage, Hunter, ZeroBounce) → 
 ```
 
 Every step with its tool and decisions: [`context/docs/gtm-system.md`](context/docs/gtm-system.md)
+HubSpot pipeline stages and lifecycle definitions: [`context/docs/pipeline.md`](context/docs/pipeline.md)
 
 ## Target workflow: Strong reviews, weak website (tree service first)
 

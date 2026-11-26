@@ -18,6 +18,7 @@ builder, not an agency.
 |---|---|
 | **One-page summary: ICP, 5 signals, architecture, target workflow** | `CONTEXT-OS.md` |
 | GTM system end to end (tools, decisions, feedback loop) | `context/docs/gtm-system.md` |
+| HubSpot pipeline stages and lifecycle definitions | `context/docs/pipeline.md` |
 | Company facts (internal sources) | `context/docs/research/company.md` |
 | Course build log | `BUILD-LOG.md` |
 | The build story: what went wrong and how it was fixed | `HOW-WE-GOT-HERE.md` |
